@@ -1,4 +1,8 @@
 body {
+  margin: 0;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Define uma altura mínima como 100% da altura da tela */
+  flex-direction: column; /* Alinha os itens em coluna */
   font-family: "Montserrat", sans-serif;
-  background-color: green;
 }
