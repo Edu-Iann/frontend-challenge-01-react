@@ -179,7 +179,7 @@ interface Plant {
   staff_favorite: boolean;
 }
 
-const PlantSection: React.FC<{data: Plant[]}> = ({ data } )  => {
+const PlantSection: React.FunctionComponent<{data: Plant[]}> = ({ data } )  => {
   const [sortedData, setSortedData] = useState(data)
 
   const sortStaffFavoritesFirst = (array: Plant[]) => {

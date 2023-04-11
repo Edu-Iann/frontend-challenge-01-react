@@ -8,11 +8,6 @@ const HeaderWrapper = styled.header`
   position: relative;
   top: 0;
   background-color: #75BC97;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    background-color: red;
-  }
 `;
 
 const LeftLeaves = styled.img`
@@ -76,9 +71,9 @@ const DownArrow = styled.img`
 `
 
 export const HeaderComponent = () => {
+  // const isMobile = useMediaQuery({ maxWidth: 768 })
   // Esse módulo seria usado para gerenciar quando a aplicação estaria num modo de celular
   // com isso, poderia ser criada um novo componente melhor construido para atender ao design mobile
-  const isMobile = useMediaQuery({ maxWidth: 768 })
   return (
     <HeaderWrapper>
       <Logo src={"../src/assets/icons/logo-white.svg"} alt="Imagem 1" />
