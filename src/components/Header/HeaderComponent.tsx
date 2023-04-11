@@ -76,6 +76,8 @@ const DownArrow = styled.img`
 `
 
 export const HeaderComponent = () => {
+  // Esse módulo seria usado para gerenciar quando a aplicação estaria num modo de celular
+  // com isso, poderia ser criada um novo componente melhor construido para atender ao design mobile
   const isMobile = useMediaQuery({ maxWidth: 768 })
   return (
     <HeaderWrapper>

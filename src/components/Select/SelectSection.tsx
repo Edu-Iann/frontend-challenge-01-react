@@ -15,7 +15,7 @@ const SectionWrapper = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 124px;
   margin: 0;
   padding: 0;
 `; 
@@ -53,15 +53,21 @@ const sunOptions = ["Select...", "no", "low", "high"];
 const waterOptions = ["Select...","rarely", "regularly", "daily"];
 const petOptions = ["Select...","yes", "no"];
 
+interface SelectedOptions {
+  sunOption: string;
+  waterOption: string;
+  petOption: string | boolean;
+}
+
 const SelectSection = () => {
-  const [selectedOptions, setSelectedOptions] = useState({
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({
     sunOption: "",
     waterOption: "",
     petOption: "",
   });
+
   const [loading, setLoading] = useState(false)
   const [listData, setListData] = useState([])
-
   const [shouldFetch, setShouldFetch] = useState(false)
 
   useEffect(() => {

@@ -7,3 +7,5 @@ export default {
     }),
   ],
 };
+
+//não funcionou para poder acessar as env.
