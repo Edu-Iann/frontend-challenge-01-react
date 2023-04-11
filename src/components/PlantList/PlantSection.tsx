@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import NoSun from '../../assets/icons/no-sun.svg'
-import LowSun from '../../assets/icons/low-sun.svg'
-import HighSun from '../../assets/icons/high-sun.svg'
-import Rarely from '../../assets/icons/1-drop.svg'
-import Regularly from '../../assets/icons/2-drops.svg'
-import Daily from '../../assets/icons/3-drops.svg'
-import Pet from '../../assets/icons/pet.svg'
-import Toxic from '../../assets/icons/toxic.svg'
-import PickIcon from '../../assets/illustrations/pick.png'
-import ArrowUp from '../../assets/icons/arrow-up.svg'
+import React, { useEffect, useState } from 'react';
+import NoSun from '../../assets/icons/no-sun.svg';
+import LowSun from '../../assets/icons/low-sun.svg';
+import HighSun from '../../assets/icons/high-sun.svg';
+import Rarely from '../../assets/icons/1-drop.svg';
+import Regularly from '../../assets/icons/2-drops.svg';
+import Daily from '../../assets/icons/3-drops.svg';
+import Pet from '../../assets/icons/pet.svg';
+import Toxic from '../../assets/icons/toxic.svg';
+import PickIcon from '../../assets/illustrations/pick.png';
+import ArrowUp from '../../assets/icons/arrow-up.svg';
 
 import styled from 'styled-components';
-import { NoPlant } from './NoPlant'
+import { NoPlant } from './NoPlant';
 
 // CARDS STYLE
 
@@ -43,7 +43,7 @@ const PlantContainer = styled.div`
   flex-wrap: wrap;
   margin: auto;
   background-color: #F6F6F6;
-`
+`;
 
 const PlantWrapper = styled.div`
   width: 900px;
@@ -55,7 +55,7 @@ const PlantWrapper = styled.div`
   margin: auto;
   padding: 20px;
   background-color: #F6F6F6;
-`
+`;
 
 const FavoritePlantCard = styled.div`
   background: #FFFFFF;
@@ -70,7 +70,7 @@ const FavoritePlantCard = styled.div`
   grid-column: span 2;
   margin: 0;
   padding: 0;
-`
+`;
 
 const PlantCard = styled.div`
   background: #FFFFFF;
@@ -83,7 +83,7 @@ const PlantCard = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
-`
+`;
 
 const PlantPhoto = styled.img`
   width: 150px;
@@ -108,7 +108,7 @@ const PlantIcon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 4px;
-` 
+`;
 const PlantPrice = styled.p`
 font-family: 'Montserrat';
 font-style: normal;
@@ -148,7 +148,7 @@ transition: background-color 0.3s ease;
   :hover {
     background-color: #99d6c088;
   }
-`
+`;
 
 const ButtonTitle = styled.p`
   font-style: normal;
@@ -166,7 +166,7 @@ const UpArrow = styled.img`
   color: red;
   margin-right: 25px;
   
-` 
+`;
 
 interface Plant {
   id: number;
@@ -179,96 +179,112 @@ interface Plant {
   staff_favorite: boolean;
 }
 
-const PlantSection: React.FunctionComponent<{data: Plant[]}> = ({ data } )  => {
-  const [sortedData, setSortedData] = useState(data)
+const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
+  const [sortedData, setSortedData] = useState(data);
 
   const sortStaffFavoritesFirst = (array: Plant[]) => {
-    const staffFavorites = array.filter(item => item.staff_favorite === true);
-    const nonStaffFavorites = array.filter(item => item.staff_favorite !== true);
+    const staffFavorites = array.filter((item) => item.staff_favorite === true);
+    const nonStaffFavorites = array.filter(
+      (item) => item.staff_favorite !== true,
+    );
     return [...staffFavorites, ...nonStaffFavorites];
-  }
+  };
 
   useEffect(() => {
     const favoriteFirst = sortStaffFavoritesFirst(data);
-    setSortedData(favoriteFirst)
-  }, [])
+    setSortedData(favoriteFirst);
+  }, []);
 
-  console.log(data)
-  
+  console.log(data);
+
   return (
     <>
-    {data.length === 0 ? 
-      <NoPlant />
-    :
-    <PlantContainer>
-      <Pick src={PickIcon}/>
-      <SectionTitle>Our picks for you</SectionTitle>
-      <PlantWrapper>
-    {sortedData.map(item => {
-      return (
-        item.staff_favorite === true ?
-        <FavoritePlantCard key={item.name}>
-          <FavoritePlantPhoto src={item.url}/>
-          <PlantName>{item.name}</PlantName>
-          <PlantInfo>
-            <PlantPrice>
-              {"$" + item.price}
-            </PlantPrice>
-            <div>  
-              <PlantIcon src={
-                item.sun === "high" ?
-                HighSun : item.sun === "low" ? 
-                LowSun : NoSun
-              } 
-              />
-              <PlantIcon src={item.toxic ? Toxic : Pet} />
-              <PlantIcon src={
-                item.water === "rarely" ? 
-                Rarely : item.water === "regularly" ?
-                Regularly : Daily
-              }
-              />
-            </div>
-          </PlantInfo>
-        </FavoritePlantCard> 
-        :
-        <PlantCard>
-          <PlantPhoto src={item.url}/>
-          <PlantName>{item.name}</PlantName>
-          <PlantInfo>
-            <PlantPrice>
-              {item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).replace(/(\.00)$/g, '')}
-            </PlantPrice>
-            <div>  
-              <PlantIcon src={
-                item.sun === "high" ?
-                HighSun : item.sun === "low" ? 
-                LowSun : NoSun
-              } 
-              />
-              <PlantIcon src={item.toxic ? Toxic : Pet} />
-              <PlantIcon src={
-                item.water === "rarely" ? 
-                Rarely : item.water === "regularly" ?
-                Regularly : Daily
-              }
-              />
-            </div>
-          </PlantInfo>
-        </PlantCard>
-        )
-    })}
-      </PlantWrapper>
-      <BackToTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <UpArrow  src={ArrowUp}/>
-        <ButtonTitle>
-        back to the top
-        </ButtonTitle>
-      </BackToTop>
-    </PlantContainer>
-    }
+      {data.length === 0 ? (
+        <NoPlant />
+      ) : (
+        <PlantContainer>
+          <Pick src={PickIcon} />
+          <SectionTitle>Our picks for you</SectionTitle>
+          <PlantWrapper>
+            {sortedData.map((item) => {
+              return item.staff_favorite === true ? (
+                <FavoritePlantCard key={item.name}>
+                  <FavoritePlantPhoto src={item.url} />
+                  <PlantName>{item.name}</PlantName>
+                  <PlantInfo>
+                    <PlantPrice>{'$' + item.price}</PlantPrice>
+                    <div>
+                      <PlantIcon
+                        src={
+                          item.sun === 'high'
+                            ? HighSun
+                            : item.sun === 'low'
+                            ? LowSun
+                            : NoSun
+                        }
+                      />
+                      <PlantIcon src={item.toxic ? Toxic : Pet} />
+                      <PlantIcon
+                        src={
+                          item.water === 'rarely'
+                            ? Rarely
+                            : item.water === 'regularly'
+                            ? Regularly
+                            : Daily
+                        }
+                      />
+                    </div>
+                  </PlantInfo>
+                </FavoritePlantCard>
+              ) : (
+                <PlantCard>
+                  <PlantPhoto src={item.url} />
+                  <PlantName>{item.name}</PlantName>
+                  <PlantInfo>
+                    <PlantPrice>
+                      {item.price
+                        .toLocaleString('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        })
+                        .replace(/(\.00)$/g, '')}
+                    </PlantPrice>
+                    <div>
+                      <PlantIcon
+                        src={
+                          item.sun === 'high'
+                            ? HighSun
+                            : item.sun === 'low'
+                            ? LowSun
+                            : NoSun
+                        }
+                      />
+                      <PlantIcon src={item.toxic ? Toxic : Pet} />
+                      <PlantIcon
+                        src={
+                          item.water === 'rarely'
+                            ? Rarely
+                            : item.water === 'regularly'
+                            ? Regularly
+                            : Daily
+                        }
+                      />
+                    </div>
+                  </PlantInfo>
+                </PlantCard>
+              );
+            })}
+          </PlantWrapper>
+          <BackToTop
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <UpArrow src={ArrowUp} />
+            <ButtonTitle>back to the top</ButtonTitle>
+          </BackToTop>
+        </PlantContainer>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default PlantSection  
+export default PlantSection;

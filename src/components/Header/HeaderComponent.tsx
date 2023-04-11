@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 const HeaderWrapper = styled.header`
   width: 1440px;
@@ -59,7 +59,7 @@ const Cta = styled.h1`
   line-height: 85px;
 
   color: #FFFFFF;
-`
+`;
 
 const DownArrow = styled.img`
   position: absolute;
@@ -68,7 +68,7 @@ const DownArrow = styled.img`
   width: 35px;
   height: 39px;
   z-index: 3;
-`
+`;
 
 export const HeaderComponent = () => {
   // const isMobile = useMediaQuery({ maxWidth: 768 })
@@ -76,12 +76,21 @@ export const HeaderComponent = () => {
   // com isso, poderia ser criada um novo componente melhor construido para atender ao design mobile
   return (
     <HeaderWrapper>
-      <Logo src={"../src/assets/icons/logo-white.svg"} alt="Imagem 1" />
-      <LeftLeaves src={"../src/assets/hero/desktop/left-leaves.png"} alt="Imagem 1" />
-      <Person src={"../src/assets/hero/desktop/plantperson.png"} alt="Imagem 1" />
-      <RightLeaves src={"../src/assets/hero/desktop/right-leaves.png"} alt="Imagem 1" />
+      <Logo src={'../src/assets/icons/logo-white.svg'} alt='Imagem 1' />
+      <LeftLeaves
+        src={'../src/assets/hero/desktop/left-leaves.png'}
+        alt='Imagem 1'
+      />
+      <Person
+        src={'../src/assets/hero/desktop/plantperson.png'}
+        alt='Imagem 1'
+      />
+      <RightLeaves
+        src={'../src/assets/hero/desktop/right-leaves.png'}
+        alt='Imagem 1'
+      />
       <Cta> Find your next green friend </Cta>
-      <DownArrow src={"../src/assets/icons/arrow-down.svg"} alt="Imagem 1" />
+      <DownArrow src={'../src/assets/icons/arrow-down.svg'} alt='Imagem 1' />
     </HeaderWrapper>
   );
 };

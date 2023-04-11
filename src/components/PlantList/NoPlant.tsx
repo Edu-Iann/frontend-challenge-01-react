@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const ListSection = styled.header`
@@ -27,7 +27,7 @@ const ListDisplay = styled.div`
 const ListNoOptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const ListNoOptionTitle = styled.h1`
   font-family: 'Montserrat';
@@ -56,21 +56,18 @@ const NoResultsIcon = styled.img`
   height: 203px;
 `;
 
-
 export const NoPlant = () => {
   return (
     <ListSection>
       <ListDisplay>
         <ListNoOptionWrapper>
-          <ListNoOptionTitle>
-            No results yet...
-          </ListNoOptionTitle>
+          <ListNoOptionTitle>No results yet...</ListNoOptionTitle>
           <ListNoOptionDesc>
-          {`Use the filters above to find the plant that best fits your environment :)`}  
+            {`Use the filters above to find the plant that best fits your environment :)`}
           </ListNoOptionDesc>
         </ListNoOptionWrapper>
-        <NoResultsIcon src={"../src/assets/illustrations/no-results.png"} />
+        <NoResultsIcon src={'../src/assets/illustrations/no-results.png'} />
       </ListDisplay>
     </ListSection>
-  )
-}
+  );
+};
