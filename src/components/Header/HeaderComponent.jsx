@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 const HeaderWrapper = styled.header`
   width: 1440px;
@@ -7,6 +8,11 @@ const HeaderWrapper = styled.header`
   position: relative;
   top: 0;
   background-color: #75BC97;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    background-color: red;
+  }
 `;
 
 const LeftLeaves = styled.img`
@@ -70,6 +76,7 @@ const DownArrow = styled.img`
 `
 
 export const HeaderComponent = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 })
   return (
     <HeaderWrapper>
       <Logo src={"../src/assets/icons/logo-white.svg"} alt="Imagem 1" />
