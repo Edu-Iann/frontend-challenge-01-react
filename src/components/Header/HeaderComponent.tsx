@@ -1,6 +1,6 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-// import { useMediaQuery } from 'react-responsive';
 
 const HeaderWrapper = styled.header`
   width: 1440px;

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import debounce from 'lodash.debounce';
 import styled from 'styled-components';
+
 import Pet from '../../assets/illustrations/dog.png';
 import Sun from '../../assets/illustrations/sun.png';
-
 import Watering from '../../assets/illustrations/wateringcan.png';
-import debounce from 'lodash.debounce';
-import { fetchData } from '../../services/api';
+import { fetchData } from '../../services/api.ts';
+import Loading from '../Loading/LoadingComponent.tsx';
+import PlantSection from '../PlantList/PlantSection.tsx';
 
-import PlantSection from '../PlantList/PlantSection';
-import Loading from '../Loading/LoadingComponent';
-import SelectInputComponent from './SelectInputComponent';
+import SelectInputComponent from './SelectInputComponent.tsx';
 
 const SectionWrapper = styled.header`
   width: 1440px;
