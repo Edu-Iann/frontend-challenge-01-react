@@ -43,11 +43,21 @@ const StaffChoice = styled.img`
 
 const PlantInfo = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
   padding: 0;
   margin: 10px;
-  width: 200px;
+  width: 381px;
+`;
+
+const PlantIconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
 `;
 
 const PlantIcon = styled.img`
@@ -60,19 +70,20 @@ const PlantPrice = styled.p`
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 700;
-font-size: 16px;
+font-size: 24px;
 line-height: 28px;
 color: #257556;
-margin: 0;
+margin: 0 0 16px 0;
 padding: 0;
+
 `;
 
 const PlantName = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 35px;
+  line-height: 37px;
   color: #1E6B4E;
   margin: 0;
   padding: 0;
@@ -95,29 +106,31 @@ const FavoritePlant: React.FC<FavoritePlantProps> = ({ item }) => {
     <FavoritePlantCard key={item.name}>
       <StaffChoice src={Favorite} />
       <FavoritePlantPhoto src={item.url} />
-      <PlantName>{item.name}</PlantName>
       <PlantInfo>
-        <PlantPrice>{'$' + item.price}</PlantPrice>
+        <PlantName>{item.name}</PlantName>
         <div>
-          <PlantIcon
-            src={
-              item.sun === 'high'
-                ? HighSun
-                : item.sun === 'low'
-                ? LowSun
-                : NoSun
-            }
-          />
-          <PlantIcon src={item.toxic ? Toxic : Pet} />
-          <PlantIcon
-            src={
-              item.water === 'rarely'
-                ? Rarely
-                : item.water === 'regularly'
-                ? Regularly
-                : Daily
-            }
-          />
+        <PlantPrice>{'$' + item.price}</PlantPrice>
+          <PlantIconContainer>
+            <PlantIcon
+              src={
+                item.sun === 'high'
+                  ? HighSun
+                  : item.sun === 'low'
+                  ? LowSun
+                  : NoSun
+              }
+            />
+            <PlantIcon src={item.toxic ? Toxic : Pet} />
+            <PlantIcon
+              src={
+                item.water === 'rarely'
+                  ? Rarely
+                  : item.water === 'regularly'
+                  ? Regularly
+                  : Daily
+              }
+            />
+          </PlantIconContainer>
         </div>
       </PlantInfo>
     </FavoritePlantCard>

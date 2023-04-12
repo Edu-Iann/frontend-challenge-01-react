@@ -12,7 +12,7 @@ import PlantSection from '../PlantList/PlantSection.tsx';
 import SelectInputComponent from './SelectInputComponent.tsx';
 
 const SectionWrapper = styled.header`
-  width: 1440px;
+  width: 100%;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -20,11 +20,8 @@ const SectionWrapper = styled.header`
   gap: 124px;
   margin: 0;
   padding: 0;
+  background-color: #FFFFFF;
 `;
-
-const sunOptions = ['Select...', 'no', 'low', 'high'];
-const waterOptions = ['Select...', 'rarely', 'regularly', 'daily'];
-const petOptions = ['Select...', 'yes', 'no'];
 
 interface SelectedOptions {
   sunOption: string;
@@ -38,10 +35,13 @@ const SelectSection = () => {
     waterOption: '',
     petOption: '',
   });
-
   const [loading, setLoading] = useState(false);
   const [listData, setListData] = useState([]);
   const [shouldFetch, setShouldFetch] = useState(false);
+
+  const sunOptions = ['Select...', 'no', 'low', 'high'];
+  const waterOptions = ['Select...', 'rarely', 'regularly', 'daily'];
+  const petOptions = ['Select...', 'yes', 'no'];
 
   useEffect(() => {
     const values = Object.values(selectedOptions);
@@ -64,45 +64,46 @@ const SelectSection = () => {
     }
   }, [shouldFetch]);
 
+  const selectInputProps = [
+    {
+      dimensions: { width: '75px', height: '75px' },
+      iconSrc: Sun,
+      text: '<b>1.</b> Set the amount of <b>sunlight</b><br /> your plant will get.',
+      options: sunOptions,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+        setSelectedOptions((prev) => ({ ...prev, sunOption: e.target.value })),
+    },
+    {
+      dimensions: { width: '102px', height: '75px' },
+      iconSrc: Watering,
+      text: '<b>2.</b> How often do you want to<br /> <b>water</b> your plant?',
+      options: waterOptions,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+        setSelectedOptions((prev) => ({ ...prev, waterOption: e.target.value })),
+    },
+    {
+      dimensions: { width: '75px', height: '75px' },
+      iconSrc: Pet,
+      text: '<b>3</b>. Do you have pets? Do<br /> they <b>chew</b> plants?',
+      options: petOptions,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+        setSelectedOptions((prev) => ({ ...prev, petOption: e.target.value === 'yes' ? true : false })),
+    },
+  ];
+
   return (
     <>
       <SectionWrapper>
-        <SelectInputComponent
-          iconSrc={Sun}
-          text='<b>1.</b> Set the amount of <b>sunlight</b><br /> your plant will get.'
-          options={sunOptions}
-          key={Sun}
-          onChange={(e) =>
-            setSelectedOptions((prev) => ({
-              ...prev,
-              sunOption: e.target.value,
-            }))
-          }
-        />
-        <SelectInputComponent
-          iconSrc={Watering}
-          text='<b>2.</b> How often do you want to<br /> <b>water</b> your plant?'
-          options={waterOptions}
-          key={Watering}
-          onChange={(e) =>
-            setSelectedOptions((prev) => ({
-              ...prev,
-              waterOption: e.target.value,
-            }))
-          }
-        />
-        <SelectInputComponent
-          iconSrc={Pet}
-          text='<b>3</b>. Do you have pets? Do<br /> they <b>chew</b> plants?'
-          options={petOptions}
-          key={Pet}
-          onChange={(e) =>
-            setSelectedOptions((prev) => ({
-              ...prev,
-              petOption: e.target.value === 'yes' ? true : false,
-            }))
-          }
-        />
+      {selectInputProps.map((component, index) => (
+          <SelectInputComponent
+            key={index}
+            dimensions={component.dimensions}
+            iconSrc={component.iconSrc}
+            text={component.text}
+            options={component.options}
+            onChange={component.onChange}
+          />
+        ))}
       </SectionWrapper>
       {loading ? <Loading /> : <PlantSection data={listData} />}
     </>

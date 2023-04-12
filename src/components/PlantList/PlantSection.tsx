@@ -79,8 +79,6 @@ const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
     setSortedData(favoriteFirst);
   }, []);
 
-  console.log(data);
-
   return (
     <>
       {data.length === 0 ? (
