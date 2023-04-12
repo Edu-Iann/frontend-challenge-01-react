@@ -88,11 +88,11 @@ const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
           <Pick src={PickIcon} />
           <SectionTitle>Our picks for you</SectionTitle>
           <PlantListWrapper>
-            {sortedData.map((item) => {
+            {sortedData.map((item, index: number) => {
               return item.staff_favorite === true ? (
-                <FavoritePlant item={item} />
+                <FavoritePlant item={item} key={index}/>
               ) : (
-                <RegularPlant item={item} />
+                <RegularPlant item={item}  key={index}/>
               );
             })}
           </PlantListWrapper>

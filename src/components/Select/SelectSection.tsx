@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Pet from '../../assets/illustrations/dog.png';
 import Sun from '../../assets/illustrations/sun.png';
 import Watering from '../../assets/illustrations/wateringcan.png';
-import { fetchData } from '../../services/api.ts';
+import { fetchData,Plant } from '../../services/api.ts';
 import Loading from '../Loading/LoadingComponent.tsx';
 import PlantSection from '../PlantList/PlantSection.tsx';
 
@@ -36,7 +36,7 @@ const SelectSection = () => {
     petOption: '',
   });
   const [loading, setLoading] = useState(false);
-  const [listData, setListData] = useState([]);
+  const [listData, setListData] = useState<Plant[]>([]);
   const [shouldFetch, setShouldFetch] = useState(false);
 
   const sunOptions = ['Select...', 'no', 'low', 'high'];
