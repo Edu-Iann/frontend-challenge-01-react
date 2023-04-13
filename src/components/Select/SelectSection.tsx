@@ -5,22 +5,31 @@ import styled from 'styled-components';
 import Pet from '../../assets/illustrations/dog.png';
 import Sun from '../../assets/illustrations/sun.png';
 import Watering from '../../assets/illustrations/wateringcan.png';
-import { fetchData,Plant } from '../../services/api.ts';
-import Loading from '../Loading/LoadingComponent.tsx';
-import PlantSection from '../PlantList/PlantSection.tsx';
+import { fetchData, Plant } from '../../services/api';
+import { useMediaQuery } from 'react-responsive';
 
-import SelectInputComponent from './SelectInputComponent.tsx';
+import Loading from '../Loading/LoadingComponent';
+import PlantSection from '../PlantList/PlantSection';
 
-const SectionWrapper = styled.header`
-  width: 100%;
-  height: 300px;
+import SelectInputComponent from './SelectInputComponent';
+
+const SectionWrapper = styled.div`
+  width: 90rem;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 124px;
-  margin: 0;
-  padding: 0;
+  margin: auto;
   background-color: #FFFFFF;
+
+  @media screen and (max-width: 768px) {
+    width: 48rem;
+    margin: auto;
+    flex-direction: column;
+    height: 80rem;
+    gap: 5rem
+  }
 `;
 
 interface SelectedOptions {
@@ -38,6 +47,7 @@ const SelectSection = () => {
   const [loading, setLoading] = useState(false);
   const [listData, setListData] = useState<Plant[]>([]);
   const [shouldFetch, setShouldFetch] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const sunOptions = ['Select...', 'no', 'low', 'high'];
   const waterOptions = ['Select...', 'rarely', 'regularly', 'daily'];
@@ -66,7 +76,10 @@ const SelectSection = () => {
 
   const selectInputProps = [
     {
-      dimensions: { width: '75px', height: '75px' },
+      dimensions: {
+        width: !isMobile ? '75px' : '135px',
+        height: !isMobile ? '75px' : '135px',
+      },
       iconSrc: Sun,
       text: '<b>1.</b> Set the amount of <b>sunlight</b><br /> your plant will get.',
       options: sunOptions,
@@ -74,27 +87,39 @@ const SelectSection = () => {
         setSelectedOptions((prev) => ({ ...prev, sunOption: e.target.value })),
     },
     {
-      dimensions: { width: '102px', height: '75px' },
+      dimensions: {
+        width: !isMobile ? '103px' : '163px',
+        height: !isMobile ? '75px' : '125px',
+      },
       iconSrc: Watering,
       text: '<b>2.</b> How often do you want to<br /> <b>water</b> your plant?',
       options: waterOptions,
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
-        setSelectedOptions((prev) => ({ ...prev, waterOption: e.target.value })),
+        setSelectedOptions((prev) => ({
+          ...prev,
+          waterOption: e.target.value,
+        })),
     },
     {
-      dimensions: { width: '75px', height: '75px' },
+      dimensions: {
+        width: !isMobile ? '75px' : '135px',
+        height: !isMobile ? '75px' : '135px',
+      },
       iconSrc: Pet,
       text: '<b>3</b>. Do you have pets? Do<br /> they <b>chew</b> plants?',
       options: petOptions,
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
-        setSelectedOptions((prev) => ({ ...prev, petOption: e.target.value === 'yes' ? true : false })),
+        setSelectedOptions((prev) => ({
+          ...prev,
+          petOption: e.target.value === 'yes' ? true : false,
+        })),
     },
   ];
 
   return (
     <>
       <SectionWrapper>
-      {selectInputProps.map((component, index) => (
+        {selectInputProps.map((component, index) => (
           <SelectInputComponent
             key={index}
             dimensions={component.dimensions}

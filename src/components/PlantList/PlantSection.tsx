@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import PickIcon from '../../assets/illustrations/pick.png';
-import BackToTopComponent from '../Buttons/BackToTop/BackToTopComponent.tsx';
+import BackToTopComponent from '../Buttons/BackToTop/BackToTopComponent';
 
-import FavoritePlant from './FavoritePlant.tsx';
-import { NoPlant } from './NoPlant.tsx';
-import RegularPlant from './RegularPlant.tsx';
+import FavoritePlant from './FavoritePlant';
+import RegularPlant from './RegularPlant';
+import { NoPlant } from './NoPlant';
 
 // CARDS STYLE
 
@@ -28,7 +28,7 @@ const SectionTitle = styled.p`
 `;
 
 const PlantListContainer = styled.div`
-  width: 1440px;
+  width: 90rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ interface Plant {
 }
 
 const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
-  const [sortedData, setSortedData] = useState(data);
+  const [sortedData, setSortedData] = useState<Plant[]>(data);
 
   const sortStaffFavoritesFirst = (array: Plant[]) => {
     const staffFavorites = array.filter((item) => item.staff_favorite === true);
@@ -90,9 +90,9 @@ const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
           <PlantListWrapper>
             {sortedData.map((item, index: number) => {
               return item.staff_favorite === true ? (
-                <FavoritePlant item={item} key={index}/>
+                <FavoritePlant item={item} key={index} />
               ) : (
-                <RegularPlant item={item}  key={index}/>
+                <RegularPlant item={item} key={index} />
               );
             })}
           </PlantListWrapper>

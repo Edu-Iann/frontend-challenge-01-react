@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import { HeaderComponent } from '../components/Header/HeaderComponent.tsx'
-import SelectSection from '../components/Select/SelectSection.tsx'
+import { HeaderComponent } from '../components/Header/HeaderComponent';
+import SelectSection from '../components/Select/SelectSection';
 
 const PlantPage = () => {
   return (
     <>
-    <HeaderComponent />
-    <SelectSection />
-  </>
-    )
-}
+      <HeaderComponent />
+      <SelectSection />
+    </>
+  );
+};
 
 export default PlantPage;

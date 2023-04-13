@@ -14,8 +14,8 @@ import Toxic from '../../assets/icons/toxic.svg';
 const FavoritePlantCard = styled.div`
   background: #FFFFFF;
   border-radius: 5px;
-  width: 437px;
-  height: 510px;
+  width: 435px;
+  height: 515px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,23 +28,21 @@ const FavoritePlantCard = styled.div`
 
 const FavoritePlantPhoto = styled.img`
   width: 300x;
-  height: 353px;
+  height: 355px;
 `;
 
 const StaffChoice = styled.img`
-  width: 189px;
-  height: 43px;
+  width: 190px;
+  height: 45px;
   border-top-right-radius: 24px;
   border-bottom-right-radius: 24px;
   position: relative;
-  top: 17px;
+  top: 18px;
   left: -124px;
 `;
 
 const PlantInfo = styled.div`
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: space-evenly; */
   padding: 0;
   margin: 10px;
   width: 381px;
@@ -67,14 +65,14 @@ const PlantIcon = styled.img`
 `;
 
 const PlantPrice = styled.p`
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
 font-size: 24px;
 line-height: 28px;
-color: #257556;
+  color: #257556;
 margin: 0 0 16px 0;
-padding: 0;
+  padding: 0;
 
 `;
 
@@ -102,30 +100,31 @@ interface FavoritePlantProps {
 }
 
 const FavoritePlant: React.FC<FavoritePlantProps> = ({ item }) => {
+  const {name, url, price, toxic, water, sun} = item
   return (
-    <FavoritePlantCard key={item.name}>
+    <FavoritePlantCard key={name}>
       <StaffChoice src={Favorite} />
-      <FavoritePlantPhoto src={item.url} />
+      <FavoritePlantPhoto src={url} />
       <PlantInfo>
-        <PlantName>{item.name}</PlantName>
+        <PlantName>{name}</PlantName>
         <div>
-        <PlantPrice>{'$' + item.price}</PlantPrice>
+          <PlantPrice>{'$' + price}</PlantPrice>
           <PlantIconContainer>
             <PlantIcon
               src={
-                item.sun === 'high'
+                sun === 'high'
                   ? HighSun
-                  : item.sun === 'low'
+                  : sun === 'low'
                   ? LowSun
                   : NoSun
               }
             />
-            <PlantIcon src={item.toxic ? Toxic : Pet} />
+            <PlantIcon src={toxic ? Toxic : Pet} />
             <PlantIcon
               src={
-                item.water === 'rarely'
+                water === 'rarely'
                   ? Rarely
-                  : item.water === 'regularly'
+                  : water === 'regularly'
                   ? Regularly
                   : Daily
               }

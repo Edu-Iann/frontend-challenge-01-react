@@ -1,7 +1,11 @@
-body {
-  width: 1440px;
-  height: 100vh;
-  margin: auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  background-color: #F6F6F6;
+  -webkit-font-smoothin: antialiased;
+}
+
+body {
+  margin: auto;
 }

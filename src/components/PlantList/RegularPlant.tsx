@@ -79,14 +79,15 @@ interface FavoritePlantProps {
 
 const RegularPlant: React.FunctionComponent<FavoritePlantProps> = ({
   item,
-}) => {
+}: FavoritePlantProps) => {
+  const { name, url, price, sun, water, toxic } = item;
   return (
     <PlantCard>
-      <PlantPhoto src={item.url} />
-      <PlantName>{item.name}</PlantName>
+      <PlantPhoto src={url} />
+      <PlantName>{name}</PlantName>
       <PlantInfo>
         <PlantPrice>
-          {item.price
+          {price
             .toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',
@@ -96,19 +97,19 @@ const RegularPlant: React.FunctionComponent<FavoritePlantProps> = ({
         <div>
           <PlantIcon
             src={
-              item.sun === 'high'
+              sun === 'high'
                 ? HighSun
-                : item.sun === 'low'
+                : sun === 'low'
                 ? LowSun
                 : NoSun
             }
           />
-          <PlantIcon src={item.toxic ? Toxic : Pet} />
+          <PlantIcon src={toxic ? Toxic : Pet} />
           <PlantIcon
             src={
-              item.water === 'rarely'
+              water === 'rarely'
                 ? Rarely
-                : item.water === 'regularly'
+                : water === 'regularly'
                 ? Regularly
                 : Daily
             }
