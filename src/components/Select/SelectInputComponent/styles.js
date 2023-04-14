@@ -15,7 +15,7 @@ export const Icon = styled.img`
 `;
 
 export const Text = styled.div`
-  color: #797979;
+  color: var(--dark-gray);
   font-style: normal;
   font-size: 0.875rem;
   line-height: 1.375rem;
@@ -29,11 +29,11 @@ export const Text = styled.div`
 `;
 
 export const SelectInput = styled.select`
-  border: 1px solid #A8A8A8;
+  border: 1px solid var(--gray);
   border-radius: 1.8rem;
   height: 2.5rem;
   width: 13.75rem;
-  color: #A8A8A8;
+  color: var(--gray);
   padding: 0 1.25rem;
   appearance: none;
 

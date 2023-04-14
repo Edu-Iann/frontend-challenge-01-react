@@ -14,7 +14,6 @@ export const Pick = styled.img`
 `;
 
 export const SectionTitle = styled.p`
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-size: 3.4375rem;
@@ -42,7 +41,7 @@ export const PlantListContainer = styled.div`
   align-content: center;
   flex-wrap: wrap;
   margin: auto;
-  background-color: #F6F6F6;
+  background-color: var(--light-gray);
   
   @media screen and (max-width: 768px) {
     width: 48rem;
@@ -58,7 +57,7 @@ export const PlantListWrapper = styled.div`
   gap: 1.5625rem;
   margin: auto;
   padding: 1.25rem;
-  background-color: #F6F6F6;
+  background-color: var(--light-gray);
 
   @media screen and (max-width: 768px) {
     width: 29.5rem;

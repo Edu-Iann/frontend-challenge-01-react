@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   width: 90rem;
   height: 31.25rem;
   position: relative;
-  background-color: #75BC97;
+  background-color: var(--light-olive);
   margin: auto;
 
   @media screen and (max-width: 768px) {
@@ -75,14 +75,12 @@ export const Cta = styled.h1`
   top: 7.75rem;
   margin: 0;
   padding: 0;
-
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-size: 4.375rem;
   line-height: 5.313rem;
 
-  color: #FFFFFF;
+  color: var(--white);
 
   @media screen and (max-width: 768px) {
     top: 12rem;

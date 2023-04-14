@@ -14,17 +14,6 @@ import {
 } from './styles';
 import { Plant } from '../../types/types';
 
-// interface Plant {
-//   id: number;
-//   name: string;
-//   sun: string;
-//   water: string;
-//   url: string;
-//   price: number;
-//   toxic: boolean;
-//   staff_favorite: boolean;
-// }
-
 const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
   const [sortedData, setSortedData] = useState<Plant[]>(data);
 

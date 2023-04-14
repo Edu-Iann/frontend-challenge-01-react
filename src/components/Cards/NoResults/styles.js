@@ -2,15 +2,14 @@ import styled from "styled-components";
 
 export const ListSection = styled.header`
   width: 90rem;
-  height: 300px;
+  height: 18.75rem;
   display: flex;
-  background-color: #F6F6F6;
+  background-color: var(--light-gray);
   margin: auto;
 
   @media screen and (max-width: 768px) {
     height: 50rem;
     width: 48rem;
-    /* flex-direction: column; */
     gap: 5rem
   }
 `;
@@ -25,58 +24,50 @@ export const ListDisplay = styled.div`
     width: 48rem;
     flex-direction: column;
     justify-content: center;
-
-    /* height: 35rem; */
   }
 `;
 
-export const ListNoOptionWrapper = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-`;
+export const ListNoOptionWrapper = styled.div``;
 
 export const ListNoOptionTitle = styled.h1`
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 45px;
-  line-height: 55px;
-  color: #A9A9A9;
+  font-size: 2.813rem;
+  line-height: 3.438rem;
+  color: var(--grayish);
 
   @media screen and (max-width: 768px) {
-    font-size: 80px;
+    font-size: 5rem;
     width: 28rem;
     margin-bottom: 4rem;
-    /* margin-top: 2rem; */
   }
 `;
 
 export const ListNoOptionDesc = styled.p`
-  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 27px;
-  color: #A9A9A9;
-  width: 220px;
+  font-size: 1rem;
+  line-height: 1.688rem;
+  color: var(--grayish);
+  width: 13.75rem;
   word-wrap: break-word;
   padding: 0;
   margin: 0;
 
   @media screen and (max-width: 768px) {
     width: 18rem;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 5rem;
 }
 `;
 
 export const NoResultsIcon = styled.img`
-  width: 104px;
-  height: 203px;
+  width: 6.5rem;
+  height: 12.688rem;
 
   @media screen and (max-width: 768px) {
-    width: 144px;
-    height: 264px;
+    width: 9rem;
+    height: 16.5rem;
   }
 `;

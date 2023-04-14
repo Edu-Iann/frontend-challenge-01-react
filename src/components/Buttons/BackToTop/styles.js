@@ -2,19 +2,19 @@ import styled from 'styled-components';
 
 export const BackToTop = styled.button`
   border: 1px solid #15573F;
-  border-radius: 25px;
-  width: 900px;
-  height: 50px;
+  border-radius: 1.563rem;
+  width: 56.25rem;
+  height: 3.125rem;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 30px auto;
+  margin: 1.875rem auto;
   transition: background-color 0.3s ease;
 
   :hover {
-    background-color: #99d6c088;
+    background-color: var(--transparent-olive);
   }
 
   @media screen and (max-width: 768px) {
@@ -27,8 +27,8 @@ export const BackToTop = styled.button`
 export const ButtonTitle = styled.p`
   font-style: normal;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: #196146;
   
   @media screen and (max-width: 768px) {
@@ -37,13 +37,12 @@ export const ButtonTitle = styled.p`
 `;
 
 export const UpArrow = styled.img`
-  width: 25px;
-  height: 25px;
-  color: red;
-  margin-right: 25px;
+  width: 1.563rem;
+  height: 1.563rem;
+  margin-right: 1.563rem;
 
   @media screen and (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
   }
 `;

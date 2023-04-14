@@ -6,9 +6,9 @@ export const SectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 124px;
+  gap: 7.75rem;
   margin: auto;
-  background-color: #FFFFFF;
+  background-color: var(--white);
 
   @media screen and (max-width: 768px) {
     width: 48rem;
