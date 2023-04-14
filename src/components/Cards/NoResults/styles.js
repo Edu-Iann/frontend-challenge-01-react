@@ -35,6 +35,8 @@ export const ListNoOptionTitle = styled.h1`
   font-size: 2.813rem;
   line-height: 3.438rem;
   color: var(--grayish);
+  margin-bottom: 1rem;
+
 
   @media screen and (max-width: 768px) {
     font-size: 5rem;
@@ -51,8 +53,6 @@ export const ListNoOptionDesc = styled.p`
   color: var(--grayish);
   width: 13.75rem;
   word-wrap: break-word;
-  padding: 0;
-  margin: 0;
 
   @media screen and (max-width: 768px) {
     width: 18rem;
