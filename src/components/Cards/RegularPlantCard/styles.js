@@ -9,8 +9,6 @@ export const PlantCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 0;
 `;
 
 export const PlantPhoto = styled.img`
