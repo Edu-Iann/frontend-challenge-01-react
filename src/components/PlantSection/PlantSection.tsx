@@ -1,67 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
 import PickIcon from '../../assets/illustrations/pick.png';
 import BackToTopComponent from '../Buttons/BackToTop/BackToTopComponent';
 
-import FavoritePlant from './FavoritePlant';
-import RegularPlant from './RegularPlant';
-import { NoPlant } from './NoPlant';
+import FavoritePlant from '../Cards/BigPlantCard/BigPlantCard';
+import RegularPlant from '../Cards/RegularPlantCard/RegularPlant';
+import { NoPlant } from '../Cards/NoResults/NoResultsComponent';
+import {
+  Pick,
+  PlantListContainer,
+  PlantListWrapper,
+  SectionTitle,
+} from './styles';
+import { Plant } from '../../types/types';
 
-// CARDS STYLE
-
-const Pick = styled.img`
-  width: 158px;
-  height: 78px;
-  margin: 50px 0 20px;
-  padding-left: 20px;
-`;
-
-const SectionTitle = styled.p`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 55px;
-  line-height: 67px;
-  margin: 0 0 20px 0;
-  padding-left: 20px;
-`;
-
-const PlantListContainer = styled.div`
-  width: 90rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: center;
-  flex-wrap: wrap;
-  margin: auto;
-  background-color: #F6F6F6;
-`;
-
-const PlantListWrapper = styled.div`
-  width: 900px;
-  height: 100%;
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  margin: auto;
-  padding: 20px;
-  background-color: #F6F6F6;
-`;
-
-interface Plant {
-  id: number;
-  name: string;
-  sun: string;
-  water: string;
-  url: string;
-  price: number;
-  toxic: boolean;
-  staff_favorite: boolean;
-}
+// interface Plant {
+//   id: number;
+//   name: string;
+//   sun: string;
+//   water: string;
+//   url: string;
+//   price: number;
+//   toxic: boolean;
+//   staff_favorite: boolean;
+// }
 
 const PlantSection: React.FunctionComponent<{ data: Plant[] }> = ({ data }) => {
   const [sortedData, setSortedData] = useState<Plant[]>(data);

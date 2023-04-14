@@ -1,42 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import debounce from 'lodash.debounce';
-import styled from 'styled-components';
 
-import Pet from '../../assets/illustrations/dog.png';
-import Sun from '../../assets/illustrations/sun.png';
-import Watering from '../../assets/illustrations/wateringcan.png';
-import { fetchData, Plant } from '../../services/api';
+import Pet from '../../../assets/illustrations/dog.png';
+import Sun from '../../../assets/illustrations/sun.png';
+import Watering from '../../../assets/illustrations/wateringcan.png';
+import { fetchData } from '../../../services/api';
 import { useMediaQuery } from 'react-responsive';
 
-import Loading from '../Loading/LoadingComponent';
-import PlantSection from '../PlantList/PlantSection';
+import Loading from '../../Loading/LoadingComponent';
 
-import SelectInputComponent from './SelectInputComponent';
-
-const SectionWrapper = styled.div`
-  width: 90rem;
-  height: 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 124px;
-  margin: auto;
-  background-color: #FFFFFF;
-
-  @media screen and (max-width: 768px) {
-    width: 48rem;
-    margin: auto;
-    flex-direction: column;
-    height: 80rem;
-    gap: 5rem
-  }
-`;
-
-interface SelectedOptions {
-  sunOption: string;
-  waterOption: string;
-  petOption: string | boolean;
-}
+import SelectInputComponent from '../SelectInputComponent/SelectInputComponent';
+import PlantSection from '../../PlantSection/PlantSection';
+import { SectionWrapper } from './styles';
+import { Plant, SelectedOptions } from '../../../types/types';
 
 const SelectSection = () => {
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({

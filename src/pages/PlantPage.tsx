@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HeaderComponent } from '../components/Header/HeaderComponent';
-import SelectSection from '../components/Select/SelectSection';
+import SelectSection from '../components/Select/SelectSection/SelectSection';
 
 const PlantPage = () => {
   return (
